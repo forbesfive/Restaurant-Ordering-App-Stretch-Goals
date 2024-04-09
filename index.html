@@ -1,0 +1,83 @@
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+        <!-- CSS -->
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="container">
+            <header arial-label="Burger bun filled with burger and salad on a wooden surface">
+                <h1>Jimmy’s Diner</h1>
+                <h2>The best burgers and pizzas in town.</h2>
+            </header>
+            <main>
+                <section>
+                    <div>
+                        <ul id="item-list">
+                            <!-- Menu Items Go Here -->
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div id="order-container">
+                        <h5>Your order</h5>
+                        <div>
+                            <ul id="order-item-list">
+                                <!-- Ordered items Go Here -->
+                            </ul>
+                        </div>
+                        <div id="total-price-container">
+                            <h6>Total price:</h6>
+                            <h4 class="order-item-price" id="order-total">$0</h4>
+                        </div>
+                        <button type="" class="transaction-btn" id="purchase-btn">Complete Order</button>
+                    </div>
+                    <div id="confirmation-text-container">
+                        <p id="confirmation-text"></p>
+                    </div>
+                </section>
+                <form id="modal-form">
+                    <h1 id="modal-header">Enter Card Details</h1>
+                    <input 
+                        type="text" 
+                        class="modal-input" 
+                        id="payer-name"
+                        name="payer-name"
+                        placeholder="Enter your name"
+                        minlength="2"
+                        pattern="[a-zA-Z]+"
+                        required
+                    >
+                    <input 
+                        type="text" 
+                        class="modal-input" 
+                        id="card-number"
+                        name="card-number"
+                        placeholder="Enter card number"
+                        minlength="16"
+                        maxlength="19"
+                        pattern="[0-9]+"
+                        required
+                    >
+                    <input 
+                        type="text" 
+                        class="modal-input" 
+                        id="card-cvv"
+                        name="card-cvv"
+                        placeholder="Enter CVV"
+                        minlength="3"
+                        pattern="[0-9]+"
+                        required
+                    >
+                    <button type="submit" class="transaction-btn" id="pay-btn">Pay</button>
+                </form>
+            </main>
+        </div>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
+
