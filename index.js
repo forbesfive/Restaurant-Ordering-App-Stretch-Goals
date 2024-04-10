@@ -7,7 +7,23 @@ const payerNameEl = document.getElementById('payer-name')
 const cardNumberEl = document.getElementById('card-number')
 const cardCvvEl = document.getElementById('card-cvv')
 
+const discountPercent = 10
+
+let discountAvailable = false
+let orderList = []
+let discountAmount = 0
+
+if(discountPercent > 0){
+    discountAvailable = true
+}
+
 function populateMenu() {
+
+    if(discountAvailable){
+        document.getElementById('discount-text').style.display = 'block'
+        document.getElementById('discount-text').textContent = `Meal Deal - ${discountPercent}% off a Pizza and a Beer - One per order `
+    }
+
     menuArray.forEach(function(item){
         const {name, ingredients, id, price, image} = item
         
@@ -24,6 +40,7 @@ function populateMenu() {
         `   
     })
 }
+
 
 populateMenu()
 
@@ -65,8 +82,6 @@ function handleEventListeners() {
 
 handleEventListeners()
 
-let orderList = []
-
 function handleAddOrderedItem(itemId) {
     
     orderContainerEl.style.display = 'block'
@@ -76,12 +91,15 @@ function handleAddOrderedItem(itemId) {
             orderList.push(item)
         }
     })
+    
+    if(discountAvailable) {
+        handleDiscount()
+    }
 
     renderOrderList(orderList)
 }
 
 function handleDeleteOrderedItem(itemId){
-    
     let remIndex
     
     orderList.map((item, index) => {
@@ -96,7 +114,59 @@ function handleDeleteOrderedItem(itemId){
         orderContainerEl.style.display = 'none'
     }
     
+    if(discountAvailable) {
+        handleDiscount()
+    }
+
     renderOrderList(orderList)
+}
+
+function handleDiscount(){
+    const mealDealAppliedTextEl = document.getElementById('meal-deal-applied-text')
+    let discount = 0
+    
+    menuArray.forEach((item)=>{
+        if(item.id === 0){
+            discount += item.price
+        }
+        if(item.id === 2){
+            discount += item.price
+        }
+    })  
+    
+    let discountArray = orderList.filter((item)=>{
+        return item.id === 0 || item.id === 2
+    })
+    
+    if(discountArray.length >= 2){
+        discountArray.forEach((item1)=>{
+            if(item1.id === 0){
+                discountAmount = 0
+                mealDealAppliedTextEl.style.display = 'none'
+                discountArray.forEach((item2)=>{
+                    if(item2.id === 2){
+                        discountAmount = discount * discountPercent / 100
+                        mealDealAppliedTextEl.style.display = 'block'
+                        mealDealAppliedTextEl.textContent = `Meal Deal Discount applied (£${discountAmount.toFixed(2)})`
+                    }
+                })
+            }
+            if(item1.id === 2){
+                discountAmount = 0
+                mealDealAppliedTextEl.style.display = 'none'
+                discountArray.forEach((item2)=>{
+                    if(item2.id === 0){
+                        discountAmount = discount * discountPercent / 100
+                        mealDealAppliedTextEl.style.display = 'block'
+                    }
+                })
+            }
+        })
+    }
+    else {
+        discountAmount = 0
+        mealDealAppliedTextEl.style.display = 'none'
+    }
 }
 
 function handleCompleteOrder(){
@@ -129,7 +199,7 @@ function renderOrderList(orderList) {
     const orderItemListEl = document.getElementById('order-item-list')
     const orderTotalEl = document.getElementById('order-total')
     let orderTotal = 0
-    
+
     orderItemListEl.innerHTML = ``
     
     orderList.map((item) => {
@@ -146,6 +216,6 @@ function renderOrderList(orderList) {
         `
         orderTotal += price
     })
-    
-    orderTotalEl.innerHTML = `$${orderTotal}`
+
+    orderTotalEl.innerHTML = `$${orderTotal - discountAmount}`
 }
