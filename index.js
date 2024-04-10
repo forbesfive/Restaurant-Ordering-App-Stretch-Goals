@@ -150,7 +150,7 @@ function handleDiscount(){
                     if(item2.id === 2){
                         discountAmount = discount * discountPercent / 100
                         mealDealAppliedTextEl.style.display = 'block'
-                        mealDealAppliedTextEl.textContent = `Meal Deal Discount applied (£${discountAmount.toFixed(2)})`
+                        mealDealAppliedTextEl.textContent = `Discount (£${discountAmount.toFixed(2)})`
                     }
                 })
             }

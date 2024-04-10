@@ -82,6 +82,7 @@ p {
 
 #meal-deal-applied-text {
     line-height: 28px;  
+    /* font-size: 12px */
 }
 
 /* Layout */
@@ -217,14 +218,14 @@ img {
 /* Buttons */
 
 .add-btn {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 1px solid #DEDEDE;
     font-size: 32px;
     font-family: inter;
     position: absolute;
-    top: 50px;
+    top: 40px;
     right: 0px;
 }
 
