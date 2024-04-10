@@ -77,6 +77,9 @@ function handleEventListeners() {
             }
             
         }
+        else if(!e.target.closest('.modal')) {
+            modalFormEl.style.display = 'none'
+        }
     })
 }
 
