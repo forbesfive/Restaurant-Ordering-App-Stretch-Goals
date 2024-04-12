@@ -75,10 +75,24 @@ function handleEventListeners() {
                     cardCvvEl.style.border = '1px solid red'
                 }   
             }
-            
+            document.getElementById('modal-feedback').style.display = 'block'
         }
         else if(!e.target.closest('.modal')) {
             modalFormEl.style.display = 'none'
+        }
+        else if(e.target.id === 'submit-feedback-btn'){
+            if(!document.getElementById('feedback-text').value){
+
+                alert("Please complete your feedback")
+            }
+            else {
+                document.getElementById('modal-feedback').style.display = "none"
+                document.getElementById('feedback-text').value = ''
+            }
+        }
+        else if(e.target.id === 'cancel-feedback-btn'){
+            document.getElementById('modal-feedback').style.display = "none"
+            document.getElementById('feedback-text').value = ''
         }
     })
 }
@@ -220,5 +234,23 @@ function renderOrderList(orderList) {
         orderTotal += price
     })
 
-    orderTotalEl.innerHTML = `$${orderTotal - discountAmount}`
+    orderTotalEl.innerHTML = `$${(orderTotal - discountAmount).toFixed(2)}`
 }
+
+function handleRating() {
+
+    document.addEventListener('click', function(e){
+        if(e.target.dataset.rating){
+            const rating = JSON.parse(e.target.dataset.rating)
+            for (let i = 0; i < 5; i++){
+                document.getElementById(`rate${i}`).checked = false
+            }
+        
+            for (let i = 0; i <= rating; i++){
+                document.getElementById(`rate${i}`).checked = true
+            }
+        }
+    })
+}
+
+handleRating()

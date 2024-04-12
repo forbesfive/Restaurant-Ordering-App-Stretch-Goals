@@ -136,12 +136,19 @@ ul {
     padding: 0 45px;
 }
 
-#order-item-list {
+#order-item-list{
     padding-bottom: 25px;
     border-bottom: 2px solid #393333;
     margin: 0;
-    padding-left: 0px;
+    padding-left: 0;
+}
 
+#rating-container{
+    padding-bottom: 25px;
+    border-bottom: 2px solid #393333;
+    margin: 0;
+    width: 70%;
+    margin: auto;
 }
 
 .order-item {
@@ -168,16 +175,9 @@ ul {
     padding: 0 45px;
 }
 
-/* Modal */
+/* Modals */
 
-#modal-form {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+.modal {
     margin: 40px;
     max-height: 517px;
     max-width: 500px;
@@ -187,6 +187,64 @@ ul {
     color: whitesmoke;
     text-align: center;
     padding: 25px;
+}
+
+#modal-form {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    max-height: 517px;
+    max-width: 500px;
+}
+
+label {
+    color: #065F46;
+    font-size: 32px;
+}
+
+textarea {
+    width: 70%;
+    border-radius: 3px;
+    padding: 3px;
+    color: black;
+    resize: none;
+}
+
+#modal-feedback {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0%;
+    left: 0%;
+    max-height: 350px;
+    max-width: 400px;
+    color: #065F46;
+}
+
+.feedback-label {
+    margin: 25px;
+
+}
+
+.modal-btn {
+    /* display: block; */
+    width: 45%;
+    margin: 20px 0 70px 0;
+    padding: 18px;
+    border-radius: 3px;
+    background-color: #16DB99;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #FFFFFF;
+    font-weight: 700;
 }
 
 #modal-header {

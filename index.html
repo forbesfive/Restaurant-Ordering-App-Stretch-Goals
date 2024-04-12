@@ -84,6 +84,35 @@
                     >
                     <button type="submit" class="transaction-btn" id="pay-btn">Pay</button>
                 </form>
+                <form class="modal" id="modal-feedback">
+                    <div id="rating-container">
+                        <p class="feedback-label"><label class="rating" for="rate0">Rate Us</label></p>
+                        <input type="radio" id="rate0" data-rating="0" checked="checked">
+                        <label class="rating" for="rate1"></label>
+                        <input type="radio" id="rate1" data-rating="1" checked="checked">
+                        <label class="rating" for="rate2"></label>
+                        <input type="radio" id="rate2" data-rating="2" checked="checked">
+                        <label class="rating" for="rate3"></label>
+                        <input type="radio" id="rate3" data-rating="3">
+                        <label class="rating" for="rate4"></label>
+                        <input type="radio" id="rate4" data-rating="4">
+                    </div>
+
+                    <p class="feedback-label"><label for="feedback-text">Leave feedback</label></p>
+                    <textarea 
+                        id="feedback-text" 
+                        name="feedback-text" 
+                        maxlength="250" 
+                        cols="56" 
+                        rows="3" 
+                        placeholder="Tell us what you think..."
+                        required
+                    ></textarea>
+                    <div>
+                        <button type="button" class="modal-btn" id="submit-feedback-btn">Submit</button>
+                        <button type="button" class="modal-btn" id="cancel-feedback-btn">Cancel</button>
+                    </div>
+                </form>
             </main>
         </div>
         <script src="index.js" type="module"></script>
