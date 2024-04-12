@@ -207,6 +207,10 @@ label {
     font-size: 32px;
 }
 
+.feedback-label {
+    margin: 25px;
+}
+
 textarea {
     width: 70%;
     border-radius: 3px;
@@ -227,11 +231,6 @@ textarea {
     max-height: 350px;
     max-width: 400px;
     color: #065F46;
-}
-
-.feedback-label {
-    margin: 25px;
-
 }
 
 .modal-btn {

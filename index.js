@@ -3,6 +3,7 @@ import menuArray from './data.js'
 const orderContainerEl = document.getElementById('order-container')
 const modalFormEl = document.getElementById('modal-form')
 
+
 const payerNameEl = document.getElementById('payer-name')
 const cardNumberEl = document.getElementById('card-number')
 const cardCvvEl = document.getElementById('card-cvv')
@@ -41,10 +42,11 @@ function populateMenu() {
     })
 }
 
-
 populateMenu()
 
 function handleEventListeners() {
+    const modalFeedBackEl = document.getElementById('modal-feedback')
+
     document.addEventListener('click', function(e){
         if(e.target.dataset.addBtn){
             handleAddOrderedItem(e.target.dataset.addBtn)
@@ -75,7 +77,7 @@ function handleEventListeners() {
                     cardCvvEl.style.border = '1px solid red'
                 }   
             }
-            document.getElementById('modal-feedback').style.display = 'block'
+            modalFeedBackEl.style.display = 'block'
         }
         else if(!e.target.closest('.modal')) {
             modalFormEl.style.display = 'none'
@@ -86,12 +88,12 @@ function handleEventListeners() {
                 alert("Please complete your feedback")
             }
             else {
-                document.getElementById('modal-feedback').style.display = "none"
+                modalFeedBackEl.style.display = "none"
                 document.getElementById('feedback-text').value = ''
             }
         }
         else if(e.target.id === 'cancel-feedback-btn'){
-            document.getElementById('modal-feedback').style.display = "none"
+            modalFeedBackEl.style.display = "none"
             document.getElementById('feedback-text').value = ''
         }
     })
